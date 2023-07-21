@@ -1,0 +1,8 @@
+.popup__container_gallery {
+    background-color: transparent;
+    max-height: 100vh;
+    max-width: none;
+    width: auto;
+    margin-top: 90px;
+    margin-bottom: 68px;
+}

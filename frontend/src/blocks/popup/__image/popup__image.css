@@ -1,0 +1,11 @@
+.popup__image {
+    object-fit: cover;
+    max-height: 540px;
+    height: 100%;
+}
+
+@media (max-width: 879px) {
+    .popup__image {
+        max-height: 299px;
+    }
+}

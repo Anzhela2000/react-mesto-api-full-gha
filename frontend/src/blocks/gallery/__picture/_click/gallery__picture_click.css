@@ -1,0 +1,6 @@
+.gallery__picture_click {
+    cursor: pointer;
+    border: none;
+    border-radius: 10px 10px 0px 0px;
+    padding: 0;
+}

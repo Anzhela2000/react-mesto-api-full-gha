@@ -1,0 +1,14 @@
+.gallery__delete {
+    background-image: url(../../../images/delete.svg);
+    object-fit: cover;
+    background-size: 18px 19px;
+    height: 18px;
+    width: 19px;
+    border: none;
+    background-color: transparent;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    cursor: pointer;
+}

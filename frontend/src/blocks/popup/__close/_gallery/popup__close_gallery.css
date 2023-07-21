@@ -1,0 +1,7 @@
+@media (max-width: 879px) {
+    .popup__close_gallery {
+        position: absolute;
+        top: -36px;
+        left: 180px;
+    }
+}

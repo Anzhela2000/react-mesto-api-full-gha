@@ -1,0 +1,16 @@
+.autorization__input {
+    border: none;
+    border-bottom: 1px solid white;
+    background-color: #000000;
+    margin-top: 30px;
+    color: #FFFFFF;
+}
+
+.autorization__input::placeholder {
+    color: #CCCCCC;
+}
+
+.autorization__input:active{
+    border: none !important;
+    border-bottom: 1px solid white;
+}
