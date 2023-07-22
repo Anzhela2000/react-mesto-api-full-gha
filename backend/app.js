@@ -31,7 +31,7 @@ app.post('/signin', login);
 
 app.use(auth);
 
-//app.use('/users', usersRouter);
+app.use('/users', usersRouter);
 app.use('/cards', cardsRouter);
 
 app.use('*', (req, res) => {
