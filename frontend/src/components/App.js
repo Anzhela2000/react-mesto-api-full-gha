@@ -8,7 +8,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import EditProfilePopup from "./EditProfilePopup";
 import { EditAvatarPopup } from "./EditAvatarPopup";
 import { AddPlacePopup } from "./AddPlacePopup";
-import { Routes, Route, Navigate, BrowserRouter, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "./Register";
 import Login from "./Login";
@@ -47,7 +47,7 @@ function App() {
     password: ''
   })
 
-  const [errorMessage, setErrorMessage] = useState('');
+  const [ setErrorMessage] = useState('');
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSuccessfull, setIsSuccessful] = useState(false);
