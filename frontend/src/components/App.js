@@ -17,6 +17,14 @@ import InfoTooltip from "./InfoTooltip";
 
 function App() {
 
+  const [data, setDate] = useState(null);
+
+  useEffect(() => {
+    fetch('http://api.mesto-anzhela.nomoredomains.xyz/')
+    .then( response => response.json )
+    .then( response => setDate(response))
+  }, [])
+
   //стэйты попапов 
 
   const [isEditProfilePopupOpen, setIsEditProfilePopupOpen] = useState(false);
@@ -47,7 +55,7 @@ function App() {
     password: ''
   })
 
-  const [ setErrorMessage] = useState('');
+  const [setErrorMessage] = useState('');
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSuccessfull, setIsSuccessful] = useState(false);
@@ -236,6 +244,7 @@ function App() {
 
   return (
     <div className="page">
+      { !data ? "Loading" : data }
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/sign-up" element={<Register handleChange={handleChangeRegister} handleSubmit={handleSubmitRegister} formValue={formValue} />} />
