@@ -8,7 +8,7 @@ import { CurrentUserContext } from '../contexts/CurrentUserContext'
 import EditProfilePopup from "./EditProfilePopup";
 import { EditAvatarPopup } from "./EditAvatarPopup";
 import { AddPlacePopup } from "./AddPlacePopup";
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, Navigate, BrowserRouter, useNavigate } from "react-router-dom";
 import ProtectedRoute from "./ProtectedRoute";
 import Register from "./Register";
 import Login from "./Login";
@@ -16,14 +16,6 @@ import * as auth from '../utils/auth.js';
 import InfoTooltip from "./InfoTooltip";
 
 function App() {
-
-  const [data, setDate] = useState(null);
-
-  useEffect(() => {
-    fetch('http://api.mesto-anzhela.nomoredomains.xyz/')
-    .then( response => response.json )
-    .then( response => setDate(response))
-  }, [])
 
   //стэйты попапов 
 
@@ -55,7 +47,7 @@ function App() {
     password: ''
   })
 
-  const [setErrorMessage] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const [isInfoTooltipOpen, setIsInfoTooltipOpen] = useState(false);
   const [isSuccessfull, setIsSuccessful] = useState(false);
@@ -244,7 +236,6 @@ function App() {
 
   return (
     <div className="page">
-      { !data ? "Loading" : data }
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
           <Route path="/sign-up" element={<Register handleChange={handleChangeRegister} handleSubmit={handleSubmitRegister} formValue={formValue} />} />
