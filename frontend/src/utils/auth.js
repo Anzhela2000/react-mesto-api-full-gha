@@ -1,11 +1,11 @@
-export const BASE_URL = 'https://auth.nomoreparties.co';
+export const BASE_URL = 'http://api.mesto-anzhela.nomoredomains.xyz';
 
 const checkResponse = (res) => {
   return res.ok ? res.json() : Promise.reject(`Ошибка: ${res.status}`)
 }
 
 export const register = (email, password) => {
-  return fetch('https://auth.nomoreparties.co/signup', {
+  return fetch(`${BASE_URL}/signup`, {
     method: "POST",
     headers: {
       "Accept": "application/json",
