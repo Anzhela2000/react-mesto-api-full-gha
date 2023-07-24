@@ -81,9 +81,9 @@ export default class Api {
 }
 
 export const api = new Api({
-    url: 'https://mesto.nomoreparties.co/v1/cohort-64',
+    url: 'http://api.mesto-anzhela.nomoredomains.xyz/',
     headers: {
-        authorization: '7d716c27-b426-4453-ad59-42f7b8df7686',
+        authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json'
     }
 });

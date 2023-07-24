@@ -1,10 +1,6 @@
 import Header from "./Header";
 import React from 'react';
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
-import * as auth from '../utils/auth.js';
 import AuthForm from "./AuthForm";
-import InfoTooltip from "./InfoTooltip";
 
 function Login({ handleSubmit, handleChange, formValue }) {
 
