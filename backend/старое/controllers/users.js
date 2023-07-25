@@ -6,14 +6,13 @@ const { ValidationError } = require('../errors/ValidationError');
 const { AutorizationError } = require('../errors/AutorizationError');
 const { ConflictError } = require('../errors/ConflictError');
 const User = require('../models/user');
-const { SECRET_STRING } = require('../utils/config');
 
 const login = (req, res, next) => {
   const { email, password } = req.body;
 
   return User.findUserByCredentials(email, password)
     .then((user) => {
-      const token = jwt.sign({ _id: user._id }, SECRET_STRING, { expiresIn: '7d' });
+      const token = jwt.sign({ _id: user._id }, process.env.SECRET_KEY, { expiresIn: '7d' });
       res.status(200).header('auth-token', token).send({ token });
     })
     .catch(() => {
@@ -27,21 +26,10 @@ const register = (req, res, next) => {
   } = req.body;
   bcrypt.hash(password, 10)
     .then((hash) => User.create({
-      email,
-      password: hash,
-      name,
-      about,
-      avatar,
+      name, about, avatar, email, password: hash,
     }))
     .then((user) => {
-      const { _id } = user;
-      return res.status(201).send({
-        email,
-        name,
-        about,
-        avatar,
-        _id,
-      });
+      res.send(user);
     })
     .catch((err) => {
       if (err.name === 'ValidationError') {

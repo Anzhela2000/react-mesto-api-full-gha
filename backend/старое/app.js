@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -8,6 +9,8 @@ const cardsRouter = require('./routes/cards');
 const errors = require('./middlewares/errors');
 const { SERVER_PORT, DB } = require('./utils/config');
 
+const { requestLogger, errorLogger } = require('./middlewares/logger');
+
 const { NOT_FOUND_ERROR_CODE } = require('./errors/NotFoundError');
 
 const {
@@ -15,8 +18,11 @@ const {
 } = require('./controllers/users');
 
 const app = express();
+app.use(cors());
 
 mongoose.connect(DB);
+
+app.use(requestLogger);
 
 app.use('/', bodyParser.json());
 app.use(express.urlencoded({
@@ -34,6 +40,8 @@ app.use('/cards', cardsRouter);
 app.use('*', (req, res) => {
   res.status(NOT_FOUND_ERROR_CODE).send({ message: 'Такой страницы нет' });
 });
+
+app.use(errorLogger);
 
 app.use(errors);
 

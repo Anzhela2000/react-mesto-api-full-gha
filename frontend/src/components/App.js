@@ -238,8 +238,8 @@ function App() {
     <div className="page">
       <CurrentUserContext.Provider value={currentUser}>
         <Routes>
-          <Route path="/sign-up" element={<Register handleChange={handleChangeRegister} handleSubmit={handleSubmitRegister} formValue={formValue} />} />
-          <Route path="/sign-in" element={<Login handleSubmit={handleSubmitLogin} handleChange={handleChangeLogin} formValue={formValue} />} />
+          <Route path="/signup" element={<Register handleChange={handleChangeRegister} handleSubmit={handleSubmitRegister} formValue={formValue} />} />
+          <Route path="/signin" element={<Login handleSubmit={handleSubmitLogin} handleChange={handleChangeLogin} formValue={formValue} />} />
           <Route path="/" element={
             <ProtectedRoute component={Main} loggedIn={loggedIn} cards={cards}
               onEditProfile={handleEditProfileClick}
