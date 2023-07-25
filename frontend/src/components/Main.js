@@ -12,7 +12,7 @@ function Main({ onEditProfile, onEditAvatar, onAddPlace, cards, onCardClick, onC
     }
 
     return (<main>
-        <Header enter={'/sign-in'} enterTitle={'Выход'} userData={userData} signOut={signOut} />
+        <Header enter={'/signin'} enterTitle={'Выход'} userData={userData} signOut={signOut} />
         <section className="profile">
             <button className="profile__avatar-button" title="Сменить аватар" onClick={onEditAvatar}>
                 <div className="profile__avatar" style={{ backgroundImage: `url(${currentUser.avatar})` }} />

@@ -170,7 +170,7 @@ function App() {
   const handleSubmitRegister = (e) => {
     e.preventDefault();
     auth.register(formValue.email, formValue.password).then(() => {
-      navigate('/sign-in', { replace: true }
+      navigate('/signin', { replace: true }
       );
     })
       .catch(err => {
