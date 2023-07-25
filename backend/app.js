@@ -16,6 +16,12 @@ const {
 
 const app = express();
 
+app.use((req, res, next) => {
+  res.header('Access-Control-Allow-Origin', 'https://mesto-anzhela.nomoredomains.xyz/sign-up');
+  res.header('Access-Control-Allow-Headers', 'Origin, X-Requested-With, Content-Type, Accept');
+  next();
+});
+
 mongoose.connect(DB);
 
 app.use('/', bodyParser.json());
