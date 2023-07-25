@@ -6,6 +6,7 @@ const auth = require('./middlewares/auth');
 const usersRouter = require('./routes/users');
 const cardsRouter = require('./routes/cards');
 const errors = require('./middlewares/errors');
+const { SERVER_PORT, DB } = require('./utils/config');
 
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -17,7 +18,7 @@ const {
 
 const app = express();
 
-mongoose.connect(process.env.DB_CONN);
+mongoose.connect(DB);
 
 app.use(requestLogger);
 
@@ -42,6 +43,6 @@ app.use(errorLogger);
 
 app.use(errors);
 
-app.listen(process.env.PORT, () => {
+app.listen(SERVER_PORT, () => {
   console.log('Сервер запущен');
 });
