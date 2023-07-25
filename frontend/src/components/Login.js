@@ -6,7 +6,7 @@ function Login({ handleSubmit, handleChange, formValue }) {
 
   return (
     <>
-      <Header enter={'/sign-up'} enterTitle={'Регистрация'} />
+      <Header enter={'/signup'} enterTitle={'Регистрация'} />
       <AuthForm handleSubmit={handleSubmit} handleChange={handleChange} formValue={formValue} title={"Вход"} buttonTitle={"Войти"} />
     </>
   );

@@ -6,7 +6,7 @@ const Register = ({ handleSubmit, handleChange, formValue }) => {
 
   return (
     <>
-      <Header enter={'/sign-in'} enterTitle={"Войти"} />
+      <Header enter={'/signin'} enterTitle={"Войти"} />
       <AuthForm handleSubmit={handleSubmit} handleChange={handleChange} formValue={formValue} title={"Регистрация"} buttonTitle={"Зарегистрироваться"} />
       <p className='autorization__question' >Уже зарегистрированы?<Link to={'/sign-in'} className='autorization__question'>Войти</Link></p>
     </>);
