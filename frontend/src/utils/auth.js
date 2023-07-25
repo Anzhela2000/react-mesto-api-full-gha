@@ -33,8 +33,7 @@ export const getContent = (token) => {
     method: "GET",
     headers: {
       "Content-Type": "application/json",
-      "Authorization" : `Bearer ${token}`,
-      'Access-Control-Allow-Origin': '*'
+      "Authorization" : `Bearer ${token}`
     },
   })
     .then(checkResponse)

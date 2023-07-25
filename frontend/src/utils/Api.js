@@ -85,6 +85,5 @@ export const api = new Api({
     headers: {
         authorization: `Bearer ${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
-        'Access-Control-Allow-Origin': '*',
     }
 });

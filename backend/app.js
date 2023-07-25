@@ -1,4 +1,5 @@
 require('dotenv').config();
+const cors = require('cors');
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
@@ -17,6 +18,7 @@ const {
 } = require('./controllers/users');
 
 const app = express();
+app.use(cors());
 
 mongoose.connect(DB);
 
