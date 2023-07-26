@@ -17,7 +17,7 @@ const login = (req, res, next) => {
       res.status(200).header('auth-token', token).send({ token });
     })
     .catch(() => {
-      next(new AutorizationError('Пользователь не зарегистрирован'));
+      next(new AutorizationError('Пользователь лох'));
     });
 };
 
