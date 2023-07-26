@@ -38,7 +38,7 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  const [loggedIn, setLoggedIn] = useState(true);
+  const [loggedIn, setLoggedIn] = useState(false);
 
   const [userEmail, setUserEmail] = useState('');
 
@@ -65,9 +65,9 @@ function App() {
   const tokenCheck = () => {
     const jwt = localStorage.getItem('jwt');
     if (jwt) {
-      auth.getContent(jwt)
+      auth.tokenCheck(jwt)
         .then((data) => {
-          handleLogin(data.data.email);
+          handleLogin(data.email);
           navigate("/", { replace: true });
         })
         .catch((err) => {
@@ -78,7 +78,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, []);
+  }, [])
 
   //лайк и удаление
 
