@@ -83,7 +83,7 @@ export default class Api {
 export const api = new Api({
     url: 'https://api.mesto-anzhela.nomoredomains.xyz',
     headers: {
-        authorization: `Bearer ${localStorage.getItem('jwt')}`,
+        authorization: `${localStorage.getItem('jwt')}`,
         'Content-Type': 'application/json',
     }
 });
