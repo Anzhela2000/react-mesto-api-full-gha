@@ -17,7 +17,7 @@ const login = (req, res, next) => {
       res.status(200).header('auth-token', token).send({ token });
     })
     .catch(() => {
-      next(new AutorizationError('Пользователь лох'));
+      next(new AutorizationError('Пользователь не зарегистрирован'));
     });
 };
 
@@ -126,16 +126,17 @@ const patchUserAvatar = (req, res, next) => {
 
 const getMe = (req, res, next) => {
   const { userId } = req.user;
-  User.findById(userId)
+
+  User
+    .findById(userId)
     .then((user) => {
-      if (!user) {
-        throw new NotFoundError('Пользователь с указанным _id не найден.');
-      }
-      return res.send(user);
+      if (user) return res.send(user);
+
+      throw new NotFoundError('Пользователь с таким id не найден');
     })
     .catch((err) => {
-      if (err instanceof mongoose.Error.CastError) {
-        next(new ValidationError('Переданы некорректные данные при обновлении аватара.'));
+      if (err.name === 'CastError') {
+        next(new ValidationError('Передан некорректный id'));
       } else {
         next(err);
       }

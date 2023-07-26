@@ -78,7 +78,7 @@ function App() {
 
   useEffect(() => {
     tokenCheck();
-  }, [])
+  }, []);
 
   //лайк и удаление
 
