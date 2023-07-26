@@ -125,7 +125,7 @@ const patchUserAvatar = (req, res, next) => {
 };
 
 const getMe = (req, res, next) => {
-  const { userId } = req.user;
+  const userId = req.user._id;
 
   User
     .findById(userId)
