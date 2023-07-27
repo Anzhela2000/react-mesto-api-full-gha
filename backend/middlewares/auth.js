@@ -1,6 +1,6 @@
 const jwt = require('jsonwebtoken');
 const { AutorizationError } = require('../errors/AutorizationError');
-const { NODE_ENV, SECRET_STRING } = require('../utils/config');
+const { SECRET_STRING } = require('../utils/config');
 
 function auth(req, res, next) {
   const { authorization } = req.headers;
@@ -12,7 +12,7 @@ function auth(req, res, next) {
   const token = authorization;
   let payload;
   try {
-    payload = jwt.verify(token, NODE_ENV === 'production' ? SECRET_STRING : 'dev-secret');
+    payload = jwt.verify(token, SECRET_STRING);
   } catch (err) {
     next(new AutorizationError('Пользователь не зарегистрирован'));
   }
