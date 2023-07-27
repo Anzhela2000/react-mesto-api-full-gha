@@ -40,6 +40,4 @@ app.use('*', (req, res) => {
 
 app.use(errors);
 
-app.listen(SERVER_PORT, () => {
-  console.log('Сервер запущен');
-});
+app.listen(SERVER_PORT);
