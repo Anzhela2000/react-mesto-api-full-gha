@@ -5,12 +5,12 @@
   
 Пожалуйста, прикрепите в это описание ссылку на сайт, размещенный на Яндекс.Облаке.
 
-Адрес репозитория: https://github.com/...
+Адрес репозитория: https://github.com/Anzhela2000/react-mesto-api-full-gha
 
 ## Ссылки на проект
 
-IP-адрес x.x.x.x
+IP-адрес 158.160.21.146
 
-Frontend https://...
+Frontend https://mesto-anzhela.nomoredomains.xyz/
 
-Backend https://...
+Backend https://api.mesto-anzhela.nomoredomains.xyz/
