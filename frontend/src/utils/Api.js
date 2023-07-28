@@ -11,9 +11,22 @@ export default class Api {
         return Promise.reject(`Ошибка: ${res.status}`)
     }
 
+    getUser() {
+        return fetch(`${this._url}/users/me`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `${localStorage.getItem("jwt")}`,
+             },
+        }).then(this._checkResponse)
+    }
+
     getCards() {
         return fetch(`${this._url}/cards`, {
-            headers: this._headers
+            headers: {
+                "Content-Type": "application/json",
+                authorization: `${localStorage.getItem("jwt")}`,
+             },
         }).then(this._checkResponse)
     }
 
@@ -42,12 +55,6 @@ export default class Api {
     deleteLike(id) {
         return fetch(`${this._url}/cards/${id}/likes`, {
             method: 'DELETE',
-            headers: this._headers,
-        }).then(this._checkResponse)
-    }
-
-    getUser() {
-        return fetch(`${this._url}/users/me`, {
             headers: this._headers,
         }).then(this._checkResponse)
     }

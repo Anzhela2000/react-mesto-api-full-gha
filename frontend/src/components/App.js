@@ -60,31 +60,11 @@ function App() {
     setUserEmail(data);
   }
 
-  //Проверка токена
-
-  const tokenCheck = () => {
-    const jwt = localStorage.getItem('jwt');
-    if (jwt) {
-      auth.tokenCheck(jwt)
-        .then((data) => {
-          handleLogin(data.email);
-          navigate("/", { replace: true });
-        })
-        .catch((err) => {
-          console.log(err);
-        })
-    }
-  }
-
-  useEffect(() => {
-    tokenCheck();
-  }, [])
-
   //лайк и удаление
 
   function handleCardLike(card) {
 
-    const isLiked = card.likes.some(i => i === currentUser._id );
+    const isLiked = card.likes.some(i => i === currentUser._id);
 
     api.changeLikeCardStatus(card._id, !isLiked).then((newCard) => {
       setCards((state) => state.map((c) => c._id === card._id ? newCard : c));
@@ -209,10 +189,10 @@ function App() {
       .then(data => {
         if (data) {
           localStorage.setItem('jwt', data.token);
-          handleLogin(formValue.email);
           navigate("/", {
             replace: true
           });
+          handleLogin(formValue.email);
         }
       })
       .catch(error => {
@@ -233,6 +213,26 @@ function App() {
         .catch(err => console.log(err));
     }
   }, [loggedIn]);
+
+  //Проверка токена
+
+  const tokenCheck = () => {
+    const jwt = localStorage.getItem('jwt');
+    if (jwt) {
+      auth.tokenCheck(jwt)
+        .then((data) => {
+          handleLogin(data.email);
+          navigate("/", { replace: true });
+        })
+        .catch((err) => {
+          console.log(err);
+        })
+    }
+  }
+
+  useEffect(() => {
+    tokenCheck();
+  }, [])
 
   return (
     <div className="page">
